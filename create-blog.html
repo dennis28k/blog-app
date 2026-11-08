@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Blog - BlogHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>BlogHub</h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="create-blog.html" class="nav-link active">Create Blog</a>
+                <a href="login.html" class="nav-link">Login</a>
+                <a href="register.html" class="nav-link btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Create Blog Section -->
+    <section class="create-blog-section">
+        <div class="container">
+            <div class="create-blog-header">
+                <h2>Create a New Blog Post</h2>
+                <p>Share your story with the world</p>
+            </div>
+
+            <div class="create-blog-container">
+                <!-- Editor -->
+                <div class="blog-editor">
+                    <form id="createBlogForm">
+                        <!-- Title -->
+                        <div class="form-group">
+                            <label for="blogTitle">Blog Title</label>
+                            <input 
+                                type="text" 
+                                id="blogTitle" 
+                                name="title" 
+                                placeholder="Enter an engaging title for your blog..." 
+                                required
+                            >
+                            <span class="char-count"><span id="titleCount">0</span>/100</span>
+                        </div>
+
+                        <!-- Category and Read Time -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="blogCategory">Category</label>
+                                <select id="blogCategory" name="category" required>
+                                    <option value="">Select a category</option>
+                                    <option value="Technology">Technology</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="Food">Food</option>
+                                    <option value="Health">Health</option>
+                                    <option value="Lifestyle">Lifestyle</option>
+                                    <option value="Business">Business</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="blogTags">Tags (comma separated)</label>
+                                <input 
+                                    type="text" 
+                                    id="blogTags" 
+                                    name="tags" 
+                                    placeholder="e.g., javascript, web development"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Featured Image -->
+                        <div class="form-group">
+                            <label for="blogImage">Featured Image</label>
+                            <div class="image-upload">
+                                <input 
+                                    type="file" 
+                                    id="blogImage" 
+                                    name="image" 
+                                    accept="image/*"
+                                >
+                                <div class="upload-area" id="uploadArea">
+                                    <span>📸</span>
+                                    <p>Drag and drop your image here or click to select</p>
+                                </div>
+                                <div id="imagePreview" class="image-preview"></div>
+                            </div>
+                        </div>
+
+                        <!-- Excerpt -->
+                        <div class="form-group">
+                            <label for="blogExcerpt">Excerpt (Brief Summary)</label>
+                            <textarea 
+                                id="blogExcerpt" 
+                                name="excerpt" 
+                                rows="3" 
+                                placeholder="Write a short summary of your blog post (150 characters)..." 
+                                maxlength="150"
+                            ></textarea>
+                            <span class="char-count"><span id="excerptCount">0</span>/150</span>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="form-group">
+                            <label for="blogContent">Blog Content</label>
+                            <div class="editor-toolbar">
+                                <button type="button" class="toolbar-btn" onclick="formatText('bold')">
+                                    <strong>B</strong>
+                                </button>
+                                <button type="button" class="toolbar-btn" onclick="formatText('italic')">
+                                    <em>I</em>
+                                </button>
+                                <button type="button" class="toolbar-btn" onclick="formatText('underline')">
+                                    <u>U</u>
+                                </button>
+                                <span class="toolbar-divider"></span>
+                                <button type="button" class="toolbar-btn" onclick="formatText('insertUnorderedList')">
+                                    📝
+                                </button>
+                                <button type="button" class="toolbar-btn" onclick="formatText('insertOrderedList')">
+                                    🔢
+                                </button>
+                                <button type="button" class="toolbar-btn" onclick="formatText('createLink')">
+                                    🔗
+                                </button>
+                            </div>
+                            <textarea 
+                                id="blogContent" 
+                                name="content" 
+                                rows="15" 
+                                placeholder="Write your blog post here... You can format your text using the toolbar above." 
+                                required
+                            ></textarea>
+                            <span class="char-count"><span id="contentCount">0</span> characters</span>
+                        </div>
+
+                        <!-- Meta Description -->
+                        <div class="form-group">
+                            <label for="blogMeta">SEO Meta Description</label>
+                            <textarea 
+                                id="blogMeta" 
+                                name="meta" 
+                                rows="2" 
+                                placeholder="Describe your blog for search engines (max 160 characters)..." 
+                                maxlength="160"
+                            ></textarea>
+                            <span class="char-count"><span id="metaCount">0</span>/160</span>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="saveDraftBtn">
+                                💾 Save as Draft
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="previewBtn">
+                                👁️ Preview
+                            </button>
+                            <button type="submit" class="btn btn-primary" id="publishBtn">
+                                ✅ Publish Blog
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Sidebar Preview -->
+                <aside class="blog-preview-sidebar">
+                    <div class="preview-card">
+                        <h3>Preview</h3>
+                        
+                        <div class="preview-section">
+                            <div class="preview-image">📸</div>
+                            <h4 id="previewTitle">Your title will appear here</h4>
+                            <p id="previewExcerpt" class="preview-excerpt">Your excerpt will appear here</p>
+                            <div class="preview-meta">
+                                <span id="previewCategory" class="badge">Category</span>
+                                <span id="previewReadTime" class="badge">0 min read</span>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="preview-section">
+                            <h4>Content Preview</h4>
+                            <div id="contentPreview" class="content-preview">
+                                Start typing to see your content preview here...
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="preview-section">
+                            <h4>Reading Time</h4>
+                            <p id="readingTime">Estimated reading time: 0 minutes</p>
+                        </div>
+                    </div>
+
+                    <div class="tips-card">
+                        <h3>💡 Tips for Great Blogs</h3>
+                        <ul>
+                            <li>Write a compelling title (50-60 characters)</li>
+                            <li>Create a clear, engaging excerpt</li>
+                            <li>Break your content into sections</li>
+                            <li>Use short paragraphs and lists</li>
+                            <li>Proofread before publishing</li>
+                            <li>Use relevant tags for better visibility</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Blog Preview</h2>
+                <span class="close-modal" onclick="closePreviewModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="previewModalBody">
+                <!-- Preview content will be inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closePreviewModal()">Close</button>
+                <button class="btn btn-primary">Publish Blog</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 BlogHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="create-blog.js"></script>
+</body>
+</html>

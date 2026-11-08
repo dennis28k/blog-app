@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BlogHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>BlogHub</h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="create-blog.html" class="nav-link">Create Blog</a>
+                <a href="login.html" class="nav-link">Login</a>
+                <a href="register.html" class="nav-link btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">👤</div>
+                <h3 id="userName">John Doe</h3>
+                <p id="userEmail">john@example.com</p>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="#" class="sidebar-link active" data-section="my-blogs">
+                    <span>📝</span> My Blogs
+                </a>
+                <a href="#" class="sidebar-link" data-section="drafts">
+                    <span>💾</span> Drafts
+                </a>
+                <a href="#" class="sidebar-link" data-section="published">
+                    <span>✅</span> Published
+                </a>
+                <a href="#" class="sidebar-link" data-section="analytics">
+                    <span>📊</span> Analytics
+                </a>
+                <a href="#" class="sidebar-link" data-section="settings">
+                    <span>⚙️</span> Settings
+                </a>
+            </nav>
+
+            <a href="#" class="btn btn-primary btn-block" style="margin-top: 2rem;">
+                <span>✏️</span> New Blog
+            </a>
+
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- My Blogs Section -->
+            <section id="my-blogs-section" class="dashboard-section active">
+                <div class="section-header">
+                    <h2>My Blogs</h2>
+                    <a href="create-blog.html" class="btn btn-primary">Create New Blog</a>
+                </div>
+
+                <div class="blogs-table-container">
+                    <table class="blogs-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Views</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="blogsTableBody">
+                            <!-- Blog rows will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Drafts Section -->
+            <section id="drafts-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Drafts</h2>
+                </div>
+                <div class="drafts-grid" id="draftsGrid">
+                    <!-- Draft cards will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Published Section -->
+            <section id="published-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Published Blogs</h2>
+                </div>
+                <div class="published-grid" id="publishedGrid">
+                    <!-- Published blogs will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Analytics</h2>
+                </div>
+
+                <div class="analytics-cards">
+                    <div class="analytics-card">
+                        <div class="analytics-icon">👁️</div>
+                        <div class="analytics-content">
+                            <h4>Total Views</h4>
+                            <p class="analytics-number" id="totalViews">2,547</p>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="analytics-icon">❤️</div>
+                        <div class="analytics-content">
+                            <h4>Total Likes</h4>
+                            <p class="analytics-number" id="totalLikes">342</p>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="analytics-icon">💬</div>
+                        <div class="analytics-content">
+                            <h4>Comments</h4>
+                            <p class="analytics-number" id="totalComments">89</p>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="analytics-icon">📚</div>
+                        <div class="analytics-content">
+                            <h4>Total Blogs</h4>
+                            <p class="analytics-number" id="totalBlogs">12</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analytics-chart">
+                    <h3>Views Over Time</h3>
+                    <div class="chart-placeholder">
+                        <p>📊 Chart visualization will go here</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Account Settings</h2>
+                </div>
+
+                <div class="settings-form">
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label for="settingsName">Full Name</label>
+                            <input 
+                                type="text" 
+                                id="settingsName" 
+                                value="John Doe" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="settingsEmail">Email Address</label>
+                            <input 
+                                type="email" 
+                                id="settingsEmail" 
+                                value="john@example.com" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="settingsBio">Bio</label>
+                            <textarea 
+                                id="settingsBio" 
+                                rows="4" 
+                                placeholder="Tell us about yourself..."
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="settingsCategory">Favorite Category</label>
+                            <select id="settingsCategory">
+                                <option>Technology</option>
+                                <option>Travel</option>
+                                <option>Food</option>
+                                <option>Health</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input 
+                                type="password" 
+                                id="currentPassword" 
+                                placeholder="Enter your current password"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input 
+                                type="password" 
+                                id="newPassword" 
+                                placeholder="Leave blank to keep current"
+                            >
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 BlogHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

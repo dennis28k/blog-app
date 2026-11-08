@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogHub - Share Your Stories</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>BlogHub</h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="create-blog.html" class="nav-link">Create Blog</a>
+                <a href="login.html" class="nav-link">Login</a>
+                <a href="register.html" class="nav-link btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to BlogHub</h2>
+            <p>Share your thoughts, ideas, and stories with the world</p>
+            <a href="register.html" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Featured Blogs Section -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Blogs</h2>
+                <p>Discover the latest and greatest stories</p>
+            </div>
+            <div class="blogs-grid" id="blogsGrid">
+                <!-- Blog cards will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Categories</h2>
+                <p>Browse by topic</p>
+            </div>
+            <div class="categories-grid" id="categoriesGrid">
+                <div class="category-card">
+                    <div class="category-icon">📝</div>
+                    <h3>Technology</h3>
+                    <p>Tech tips and tutorials</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">✈️</div>
+                    <h3>Travel</h3>
+                    <p>Journey around the world</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍽️</div>
+                    <h3>Food</h3>
+                    <p>Recipes and culinary adventures</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">💪</div>
+                    <h3>Health</h3>
+                    <p>Wellness and fitness tips</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Share Your Story?</h2>
+                <p>Join thousands of writers and start blogging today</p>
+                <a href="register.html" class="btn btn-light">Sign Up Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About BlogHub</h4>
+                    <p>A platform for sharing ideas, stories, and insights with the world.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BlogHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
